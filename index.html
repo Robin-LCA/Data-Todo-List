@@ -8,11 +8,14 @@
    <link rel="stylesheet" href="./app.css">
 </head>
 <body>
-   
-    <button onclick="fetchTodos()">Fetch Todos</button>
-    <button onclick="logTodos()">Log Todos</button>
-    <button onclick="populateTodos()">Populate Todos</button>
-    <button onclick="clearTodos()">Clear Todos</button>
+   <!-- Removed button since I'm fetching for all the other button functions -->
+    <!-- <button onclick="fetchTodos()">Fetch Todos</button>
+    <button onclick="logTodos()">Log Todos</button> -->
+    <br>
+    <button onclick="populateTodos()">Get All Todos</button>
+    <br><br>
+    <hr>
+    <!-- <button onclick="clearTodos()">Clear Todos</button> -->
 
     <!-- Don't use a form. It expects an action and messes everything up!-->
     <p>
@@ -21,7 +24,8 @@
     </p>
 
     <button onclick="getByUser()">Get Todos by User</button>
-    
+    <button onclick="getCompletedByUser()">Get Completed Todos by User</button>
+    <button onclick="getIncompletedByUser()">Get Completed Todos by User</button>
     <ol id="todo-list">
     <!-- LIs will go here -->
     </ol>

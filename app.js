@@ -27,58 +27,66 @@
   
   const populateTodos = () => {
 
-   for(let i = 0; i < arrayOfTodos.length; i++) {
-
-      // Find the ol by ID and put it in a variable
-      let todoList = document.getElementById('todo-list');
-
-      // Create and element for a list item - li
-      let todoItem = document.createElement('LI'); // <li></li>
-
-      // create the text element for the title
-      let todoTitle = document.createTextNode(arrayOfTodos[i].title);
-
-      // put the list item in the ol
-      todoItem.appendChild(todoTitle); //<li>lorem ipsum</li>
-      todoList.appendChild(todoItem);  // puts the li inside the ol
-   }     
+    clearTodos()
+    fetchTodos()
+    printList(arrayOfTodos)
   
 }
-
 
 const getByUser = () => {
 
     //clear the previous todos from the view
     clearTodos();
+    //fetch array of objects
+    fetchTodos();
 
     // need the value from the html input (num-input)
     const numInput = document.getElementById('num-input').valueAsNumber
 
     // filter where userId = num-input
     // store the currently filtered todos in a variable
-    // const result = words.filter((word) => word.length > 6);
+   
+    const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput );
 
-    const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput )
+    printList(filteredArray);
 
-    // populate the lis with the filtered list
+}
 
-    for(let i = 0; i < filteredArray.length; i++) {
+const getCompletedByUser = () => {
 
-        //console.log(filteredArray[i].title)
+    //clear the previous todos from the view
+    clearTodos();
+    //fetch array of objects
+    fetchTodos();
 
-      // Find the ol by ID and put it in a variable
-      let todoList = document.getElementById('todo-list');
+    // need the value from the html input (num-input)
+    const numInput = document.getElementById('num-input').valueAsNumber
 
-      // Create and element for a list item - li
-      let todoItem = document.createElement('LI'); // <li></li>
+    // filter where userId = num-input
+    // store the currently filtered todos in a variable
+   
+    const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput && arr.completed == true );
 
-      // create the text element for the title
-      let todoTitle = document.createTextNode("User: " + filteredArray[i].userId + " Title: " +filteredArray[i].title);
+    printList(filteredArray);
 
-      // put the list item in the ol
-      todoItem.appendChild(todoTitle); //<li>lorem ipsum</li>
-      todoList.appendChild(todoItem);  // puts the li inside the ol
-   }   
+}
+
+const getIncompletedByUser = () => {
+
+    //clear the previous todos from the view
+    clearTodos();
+    //fetch array of objects
+    fetchTodos();
+
+    // need the value from the html input (num-input)
+    const numInput = document.getElementById('num-input').valueAsNumber
+
+    // filter where userId = num-input
+    // store the currently filtered todos in a variable
+   
+    const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput && arr.completed == false );
+
+    printList(filteredArray);
 
 }
 
@@ -87,14 +95,32 @@ const clearTodos = () => {
     const todos = document.getElementsByTagName("OL")    
     // loops over the HTML Collection of LIs and clears out the todos
     for (i=0; i < todos.length; i++) {
-      // will log out the id of each todo as it loops over them.
-      //console.log(todos[i].id)
       // sets the innerHTML to null to replace the todos
       todos[i].innerHTML = null;
     }  
 
 }
 
+// Since I use this code to print all lists, I made it into a new
+// function and pass in the array I need to print
+const printList = (arr) => {
+    for(let i = 0; i < arr.length; i++) {
+
+        // Find the ol by ID and put it in a variable
+        let todoList = document.getElementById('todo-list');
+  
+        // Create and element for a list item - li
+        let todoItem = document.createElement('LI'); // <li></li>
+  
+        // create the text element for the title
+        let todoTitle = document.createTextNode("User: " + arr[i].userId + " Title: " + arr[i].title + " Completed: " + arr[i].completed);
+  
+        // put the list item in the ol
+        todoItem.appendChild(todoTitle); //<li>lorem ipsum</li>
+        todoList.appendChild(todoItem);  // puts the li inside the ol
+     }     
+    
+}
 
 
 
@@ -105,11 +131,10 @@ const clearTodos = () => {
 // DONE -Add a button that when clicked will:
 // DONE -clear the previous todos from the view - new function
 // DONE -and populate it with only todos with the userID that matches the number inputted.
-
 // DONE -then stores the currently filtered todos in a variable so that ...
-// You can create two more buttons that when clicked:
+// DONE -You can create two more buttons that when clicked:
 
-// removes those todos from the view
-// and shows only todos that are either:
-// completed
-// not completed
+// DONE -removes those todos from the view
+// DONE -and shows only todos that are either:
+// DONE -completed
+// DONE -not completed
