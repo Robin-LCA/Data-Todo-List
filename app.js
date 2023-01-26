@@ -1,18 +1,18 @@
     // We'll pre-populate this array with a couple objects just so it's not undefined if your internet connection isn't working properly.
-
-    let arrayOfTodos = [
-      {
-      "userId": 14,
-      "id": 1,
-      "title": "delectus aut autem",
-      "completed": false
-  },
-  {
-      "userId": 20,
-      "id": 2,
-      "title": "delectus aut autem",
-      "completed": false
-  }]
+// Commented this out so I don't have to click twice to populate all todos
+//     let arrayOfTodos = [
+//       {
+//       "userId": 14,
+//       "id": 1,
+//       "title": "delectus aut autem",
+//       "completed": false
+//   },
+//   {
+//       "userId": 20,
+//       "id": 2,
+//       "title": "delectus aut autem",
+//       "completed": false
+//   }]
   
   const fetchTodos = () => {
       fetch('https://jsonplaceholder.typicode.com/todos')
@@ -61,17 +61,14 @@ const getCompletedByUser = () => {
 
     // need the value from the html input (num-input)
     const numInput = document.getElementById('num-input').valueAsNumber
-
-    // filter where userId = num-input
-    // store the currently filtered todos in a variable
-   
+ 
     const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput && arr.completed == true );
 
     printList(filteredArray);
 
 }
 
-const getIncompletedByUser = () => {
+const getIncompleteByUser = () => {
 
     //clear the previous todos from the view
     clearTodos();
@@ -80,10 +77,7 @@ const getIncompletedByUser = () => {
 
     // need the value from the html input (num-input)
     const numInput = document.getElementById('num-input').valueAsNumber
-
-    // filter where userId = num-input
-    // store the currently filtered todos in a variable
-   
+ 
     const filteredArray = arrayOfTodos.filter((arr) => arr.userId === numInput && arr.completed == false );
 
     printList(filteredArray);
